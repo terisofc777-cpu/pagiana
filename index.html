@@ -647,17 +647,28 @@
     function handleFormSubmit(event) {
       event.preventDefault();
       
+      // Verificar se o formulário está preenchido
+      const form = event.target;
+      const nome = form.querySelector('#nome-encomenda').value.trim();
+      const email = form.querySelector('#email-encomenda').value.trim();
+      const mensagem = form.querySelector('#mensagem-encomenda').value.trim();
+      
+      if (!nome || !email || !mensagem) {
+        alert('Por favor, preencha todos os campos obrigatórios.');
+        return;
+      }
+      
       // Mostrar modal de agradecimento
       showThankYouModal();
       
       // Enviar formulário para Formspree após delay
       setTimeout(() => {
-        event.target.submit();
+        form.submit();
       }, 3000);
       
       // Limpar o formulário após mostrar o modal
       setTimeout(() => {
-        event.target.reset();
+        form.reset();
       }, 1000);
     }
 
