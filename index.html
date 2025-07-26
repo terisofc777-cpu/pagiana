@@ -658,18 +658,13 @@
         return;
       }
       
-      // Mostrar modal de agradecimento
-      showThankYouModal();
+      // Enviar formulário imediatamente
+      form.submit();
       
-      // Enviar formulário para Formspree após delay
+      // Mostrar modal de agradecimento após um pequeno delay
       setTimeout(() => {
-        form.submit();
-      }, 3000);
-      
-      // Limpar o formulário após mostrar o modal
-      setTimeout(() => {
-        form.reset();
-      }, 1000);
+        showThankYouModal();
+      }, 500);
     }
 
     function showThankYouModal() {
