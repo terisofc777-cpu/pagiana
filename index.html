@@ -165,6 +165,56 @@
       margin-bottom: 10px;
     }
     
+    /* Estilos do Seletor de Idioma */
+    .language-selector {
+      text-align: right;
+      margin-bottom: 8px;
+      padding: 2px;
+      background-color: rgba(0, 255, 255, 0.1);
+      border-radius: 12px;
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      backdrop-filter: blur(5px);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    .language-selector select {
+      background-color: #111111;
+      color: #00ffff;
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      border-radius: 10px;
+      padding: 3px 8px;
+      font-size: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+      min-width: 35px;
+    }
+    
+    .language-selector select:focus {
+      outline: none;
+      box-shadow: 0 0 6px rgba(0, 255, 255, 0.3);
+    }
+    
+    .language-selector select:hover {
+      background-color: rgba(0, 255, 255, 0.15);
+      transform: scale(1.05);
+    }
+    
+    /* Estilos para as opções do dropdown */
+    .language-selector select option {
+      background-color: #222222;
+      color: #ffffff;
+      padding: 8px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    
+    .language-selector select option:hover {
+      background-color: #00ffff;
+      color: #000000;
+    }
+    
     @media (max-width: 600px) {
       body {
         padding: 10px;
@@ -186,92 +236,451 @@
         padding: 15px;
       }
     }
+
+    /* Estilos do Modal */
+    .modal {
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #111111;
+      margin: 5% auto;
+      padding: 0;
+      border: 2px solid #00ffff;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+      animation: modalSlideIn 0.3s ease-out;
+    }
+
+    @keyframes modalSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .modal-header {
+      background: linear-gradient(45deg, #00ffff, #0080ff);
+      color: #000000;
+      padding: 20px;
+      border-radius: 13px 13px 0 0;
+      text-align: center;
+    }
+
+    .modal-header h2 {
+      margin: 0;
+      color: #000000;
+      font-size: 1.8em;
+    }
+
+    .modal-body {
+      padding: 30px;
+      color: #ffffff;
+    }
+
+    .modal-body p {
+      margin-bottom: 15px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .modal-body ul {
+      margin: 20px 0;
+      padding-left: 20px;
+    }
+
+    .modal-body li {
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .modal-body a {
+      color: #00ffff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .modal-body a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    .modal-footer {
+      padding: 20px;
+      text-align: center;
+      border-top: 1px solid #333333;
+    }
+
+    .modal-button {
+      background: linear-gradient(45deg, #00ffff, #0080ff);
+      color: #000000;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 25px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .modal-button:hover {
+      background: linear-gradient(45deg, #0080ff, #00ffff);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 255, 255, 0.4);
+    }
+
+    @media (max-width: 600px) {
+      .modal-content {
+        width: 95%;
+        margin: 10% auto;
+      }
+      
+      .modal-header h2 {
+        font-size: 1.5em;
+      }
+      
+      .modal-body {
+        padding: 20px;
+      }
+      
+      .modal-body p, .modal-body li {
+        font-size: 14px;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Canal Teris</h1>
+    <!-- Seletor de Idioma -->
+    <div class="language-selector">
+      <select id="language-select" onchange="changeLanguage(this.value)">
+        <option value="pt">PT</option>
+        <option value="en">EN</option>
+        <option value="es">ES</option>
+      </select>
+    </div>
+
+    <h1 data-translate="title">Canal Teris</h1>
     <p style="text-align: center; margin-bottom: 30px;">
       <a href="https://youtube.com/@teris_ofc_777" target="_blank" style="font-size: 18px; font-weight: bold;">
-        🎥 Visite meu canal no YouTube
+        🎥 <span data-translate="visit-channel">Visite meu canal no YouTube</span>
       </a>
     </p>
 
     <div class="section">
-      <h2>📚 Manuais PDF</h2>
+      <h2 data-translate="manuals-title">📚 Manuais PDF</h2>
       <div class="pdf-links">
         <a href="https://drive.google.com/file/d/1APlA2fFNhq7gKgJWEz634d1TEswz1fmg/view?usp=sharing" target="_blank">
-          📘 Manual Teris (Português)
+          📘 <span data-translate="manual-pt">Manual Teris (Português)</span>
         </a>
         <a href="https://drive.google.com/file/d/1WvHQVsSJRkCPCpvtrYqhCTk05kVAinNn/view?usp=sharing" target="_blank">
-          📙 Manual Teris (English)
+          📙 <span data-translate="manual-en">Manual Teris (English)</span>
         </a>
       </div>
     </div>
 
     <div class="section">
-      <h2>🔧 Guia Transformation</h2>
+      <h2 data-translate="transformation-guide">🔧 Guia Transformation</h2>
       <div class="construction-box">
-        <h3>🚧 Em Construção</h3>
-        <p><strong>Em breve disponível aqui no site.</strong></p>
+        <h3 data-translate="under-construction">🚧 Em Construção</h3>
+        <p><strong data-translate="coming-soon">Em breve disponível aqui no site.</strong></p>
       </div>
     </div>
 
     <div class="section">
-      <h2>📋 Status de Pedidos</h2>
+      <h2 data-translate="orders-status">📋 Status de Pedidos</h2>
       <div class="status-box">
-        <h3>⚠️ Pedidos Temporariamente Suspensos</h3>
-        <p><strong>No momento não estou aceitando pedidos.</strong></p>
-        <p>📌 Sempre verifique este site para saber quando estarei disponível novamente. No momento, estou focando no conteúdo dos PDFs e questões pessoais.</p>
+        <h3 data-translate="orders-suspended">⚠️ Pedidos Temporariamente Suspensos</h3>
+        <p><strong data-translate="not-accepting">No momento não estou aceitando pedidos.</strong></p>
+        <p data-translate="check-site">📌 Sempre verifique este site para saber quando estarei disponível novamente. No momento, estou focando no conteúdo dos PDFs e questões pessoais.</p>
       </div>
     </div>
 
     <div class="section">
-      <h2>🎁 Pedido Gratuito</h2>
-      <p>Use este formulário para enviar um pedido simples (gratuito).</p>
-      <p><em>⚠️ <strong>IMPORTANTE:</strong> No momento não posso fazer pedidos gratuitos. Este formulário está temporariamente desabilitado.</em></p>
+      <h2 data-translate="free-order">🎁 Pedido Gratuito</h2>
+      <p data-translate="use-form-free">Use este formulário para enviar um pedido simples (gratuito).</p>
+      <p><em>⚠️ <strong data-translate="important">IMPORTANTE:</strong> <span data-translate="free-disabled">No momento não posso fazer pedidos gratuitos. Este formulário está temporariamente desabilitado.</span></em></p>
       <form action="https://formspree.io/f/xovldbao" method="POST" style="opacity: 0.5; pointer-events: none;">
-        <label for="nome-pedido">Seu nome</label>
+        <label for="nome-pedido" data-translate="your-name">Seu nome</label>
         <input type="text" id="nome-pedido" name="nome" required disabled>
 
-        <label for="email-pedido">Seu e-mail</label>
+        <label for="email-pedido" data-translate="your-email">Seu e-mail</label>
         <input type="email" id="email-pedido" name="email" required disabled>
 
-        <label for="mensagem-pedido">Seu pedido (inclua onde deseja receber)</label>
+        <label for="mensagem-pedido" data-translate="your-order">Seu pedido (inclua onde deseja receber)</label>
         <textarea id="mensagem-pedido" name="mensagem" rows="4" required disabled></textarea>
 
-        <button type="submit" disabled>Formulário Temporariamente Desabilitado</button>
+        <button type="submit" disabled data-translate="form-disabled">Formulário Temporariamente Desabilitado</button>
       </form>
     </div>
 
     <div class="section">
-      <h2>💰 Encomenda Personalizada</h2>
-      <p><strong>Valor: R$10</strong></p>
-      <p>💳 Formas de pagamento: apenas via <strong>Pix</strong>. As instruções serão enviadas para o seu e-mail após o envio da solicitação.</p>
-      <p>Use este formulário para solicitar uma encomenda feita do zero.</p>
-      <p><em>⚠️ <strong>IMPORTANTE:</strong> Informe na descrição como deseja receber (Email, Drive ou YouTube).</em></p>
-      <form action="https://formspree.io/f/xovldbao" method="POST">
-        <label for="nome-encomenda">Seu nome</label>
+      <h2 data-translate="custom-order">💰 Encomenda Personalizada</h2>
+      <p><strong data-translate="price">Valor: R$10</strong></p>
+      <p data-translate="payment-info">💳 Formas de pagamento: apenas via <strong>Pix</strong>. As instruções serão enviadas para o seu e-mail após o envio da solicitação.</p>
+      <p data-translate="use-form-custom">Use este formulário para solicitar uma encomenda feita do zero.</p>
+      <p><em>⚠️ <strong data-translate="important">IMPORTANTE:</strong> <span data-translate="receive-info">Informe na descrição como deseja receber (Email, Drive ou YouTube).</span></em></p>
+      <form id="encomenda-form" action="https://formspree.io/f/xovldbao" method="POST" onsubmit="handleFormSubmit(event)">
+        <label for="nome-encomenda" data-translate="your-name">Seu nome</label>
         <input type="text" id="nome-encomenda" name="nome" required>
 
-        <label for="email-encomenda">Seu e-mail</label>
+        <label for="email-encomenda" data-translate="your-email">Seu e-mail</label>
         <input type="email" id="email-encomenda" name="email" required>
 
-        <label for="mensagem-encomenda">Detalhes da encomenda (inclua onde deseja receber)</label>
+        <label for="mensagem-encomenda" data-translate="order-details">Detalhes da encomenda (inclua onde deseja receber)</label>
         <textarea id="mensagem-encomenda" name="mensagem" rows="4" required></textarea>
 
-        <button type="submit">Solicitar Encomenda</button>
+        <button type="submit" data-translate="request-order">Solicitar Encomenda</button>
       </form>
     </div>
 
     <div class="section">
-      <h2>📞 Contato</h2>
+      <h2 data-translate="contact">📞 Contato</h2>
       <div class="contact-info">
-        <p>📧 Email: <a href="mailto:teris.ofc777@gmail.com">teris.ofc777@gmail.com</a> — caso tenha dúvidas ou precise falar diretamente comigo.</p>
-        <p>📱 Amino: teris_777 — também pode me encontrar por lá.</p>
+        <p>📧 Email: <a href="mailto:teris.ofc777@gmail.com">teris.ofc777@gmail.com</a> — <span data-translate="email-info">caso tenha dúvidas ou precise falar diretamente comigo.</span></p>
+        <p>📱 Amino: teris_777 — <span data-translate="amino-info">também pode me encontrar por lá.</span></p>
         <p>🎥 YouTube: <a href="https://youtube.com/@teris_ofc_777" target="_blank">@teris_ofc_777</a></p>
       </div>
     </div>
   </div>
+
+  <!-- Modal de Agradecimento -->
+  <div id="thankYouModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 data-translate="order-received">🎉 Pedido Recebido!</h2>
+      </div>
+      <div class="modal-body">
+        <p><strong data-translate="thank-you-form">Obrigado pelo seu formulário!</strong></p>
+        <p data-translate="order-analysis">✅ Seu pedido está em análise e estará pronto em breve.</p>
+        <p data-translate="email-confirmation">📧 Você receberá uma confirmação por e-mail.</p>
+        <p data-translate="contact-more-info">📞 Entre em contato para mais informações:</p>
+        <ul>
+          <li>📧 Email: <a href="mailto:teris.ofc777@gmail.com">teris.ofc777@gmail.com</a></li>
+          <li>📱 Amino: teris_777</li>
+          <li>🎥 YouTube: <a href="https://youtube.com/@teris_ofc_777" target="_blank">@teris_ofc_777</a></li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button onclick="closeThankYouModal()" class="modal-button" data-translate="close">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Sistema de Tradução
+    const translations = {
+      pt: {
+        // Títulos
+        'title': 'Canal Teris',
+        'visit-channel': 'Visite meu canal no YouTube',
+        'manuals-title': '📚 Manuais PDF',
+        'manual-pt': 'Manual Teris (Português)',
+        'manual-en': 'Manual Teris (English)',
+        'transformation-guide': '🔧 Guia Transformation',
+        'under-construction': '🚧 Em Construção',
+        'coming-soon': 'Em breve disponível aqui no site.',
+        'orders-status': '📋 Status de Pedidos',
+        'orders-suspended': '⚠️ Pedidos Temporariamente Suspensos',
+        'not-accepting': 'No momento não estou aceitando pedidos.',
+        'check-site': '📌 Sempre verifique este site para saber quando estarei disponível novamente. No momento, estou focando no conteúdo dos PDFs e questões pessoais.',
+        'free-order': '🎁 Pedido Gratuito',
+        'use-form-free': 'Use este formulário para enviar um pedido simples (gratuito).',
+        'important': 'IMPORTANTE:',
+        'free-disabled': 'No momento não posso fazer pedidos gratuitos. Este formulário está temporariamente desabilitado.',
+        'your-name': 'Seu nome',
+        'your-email': 'Seu e-mail',
+        'your-order': 'Seu pedido (inclua onde deseja receber)',
+        'form-disabled': 'Formulário Temporariamente Desabilitado',
+        'custom-order': '💰 Encomenda Personalizada',
+        'price': 'Valor: R$10',
+        'payment-info': '💳 Formas de pagamento: apenas via Pix. As instruções serão enviadas para o seu e-mail após o envio da solicitação.',
+        'use-form-custom': 'Use este formulário para solicitar uma encomenda feita do zero.',
+        'receive-info': 'Informe na descrição como deseja receber (Email, Drive ou YouTube).',
+        'order-details': 'Detalhes da encomenda (inclua onde deseja receber)',
+        'request-order': 'Solicitar Encomenda',
+        'contact': '📞 Contato',
+        'email-info': 'caso tenha dúvidas ou precise falar diretamente comigo.',
+        'amino-info': 'também pode me encontrar por lá.',
+        // Modal
+        'order-received': '🎉 Pedido Recebido!',
+        'thank-you-form': 'Obrigado pelo seu formulário!',
+        'order-analysis': '✅ Seu pedido está em análise e estará pronto em breve.',
+        'email-confirmation': '📧 Você receberá uma confirmação por e-mail.',
+        'contact-more-info': '📞 Entre em contato para mais informações:',
+        'close': 'Fechar'
+      },
+      en: {
+        // Titles
+        'title': 'Teris Channel',
+        'visit-channel': 'Visit my YouTube channel',
+        'manuals-title': '📚 PDF Manuals',
+        'manual-pt': 'Teris Manual (Portuguese)',
+        'manual-en': 'Teris Manual (English)',
+        'transformation-guide': '🔧 Transformation Guide',
+        'under-construction': '🚧 Under Construction',
+        'coming-soon': 'Coming soon to this site.',
+        'orders-status': '📋 Order Status',
+        'orders-suspended': '⚠️ Orders Temporarily Suspended',
+        'not-accepting': 'I am not accepting orders at the moment.',
+        'check-site': '📌 Always check this site to know when I will be available again. Currently, I am focusing on PDF content and personal matters.',
+        'free-order': '🎁 Free Order',
+        'use-form-free': 'Use this form to send a simple (free) order.',
+        'important': 'IMPORTANT:',
+        'free-disabled': 'I cannot make free orders at the moment. This form is temporarily disabled.',
+        'your-name': 'Your name',
+        'your-email': 'Your email',
+        'your-order': 'Your order (include where you want to receive)',
+        'form-disabled': 'Form Temporarily Disabled',
+        'custom-order': '💰 Custom Order',
+        'price': 'Price: R$10',
+        'payment-info': '💳 Payment methods: only via Pix. Instructions will be sent to your email after submitting the request.',
+        'use-form-custom': 'Use this form to request a custom order from scratch.',
+        'receive-info': 'Include in the description how you want to receive (Email, Drive or YouTube).',
+        'order-details': 'Order details (include where you want to receive)',
+        'request-order': 'Request Order',
+        'contact': '📞 Contact',
+        'email-info': 'if you have questions or need to speak directly with me.',
+        'amino-info': 'you can also find me there.',
+        // Modal
+        'order-received': '🎉 Order Received!',
+        'thank-you-form': 'Thank you for your form!',
+        'order-analysis': '✅ Your order is under analysis and will be ready soon.',
+        'email-confirmation': '📧 You will receive an email confirmation.',
+        'contact-more-info': '📞 Contact for more information:',
+        'close': 'Close'
+      },
+      es: {
+        // Títulos
+        'title': 'Canal Teris',
+        'visit-channel': 'Visita mi canal de YouTube',
+        'manuals-title': '📚 Manuales PDF',
+        'manual-pt': 'Manual Teris (Portugués)',
+        'manual-en': 'Manual Teris (Inglés)',
+        'transformation-guide': '🔧 Guía de Transformación',
+        'under-construction': '🚧 En Construcción',
+        'coming-soon': 'Próximamente disponible en este sitio.',
+        'orders-status': '📋 Estado de Pedidos',
+        'orders-suspended': '⚠️ Pedidos Temporalmente Suspendidos',
+        'not-accepting': 'No estoy aceptando pedidos en este momento.',
+        'check-site': '📌 Siempre verifica este sitio para saber cuándo estaré disponible nuevamente. Actualmente, me estoy enfocando en el contenido de PDF y asuntos personales.',
+        'free-order': '🎁 Pedido Gratuito',
+        'use-form-free': 'Usa este formulario para enviar un pedido simple (gratuito).',
+        'important': 'IMPORTANTE:',
+        'free-disabled': 'No puedo hacer pedidos gratuitos en este momento. Este formulario está temporalmente deshabilitado.',
+        'your-name': 'Tu nombre',
+        'your-email': 'Tu correo electrónico',
+        'your-order': 'Tu pedido (incluye dónde quieres recibir)',
+        'form-disabled': 'Formulario Temporalmente Deshabilitado',
+        'custom-order': '💰 Pedido Personalizado',
+        'price': 'Precio: R$10',
+        'payment-info': '💳 Métodos de pago: solo via Pix. Las instrucciones serán enviadas a tu correo después de enviar la solicitud.',
+        'use-form-custom': 'Usa este formulario para solicitar un pedido personalizado desde cero.',
+        'receive-info': 'Incluye en la descripción cómo quieres recibir (Email, Drive o YouTube).',
+        'order-details': 'Detalles del pedido (incluye dónde quieres recibir)',
+        'request-order': 'Solicitar Pedido',
+        'contact': '📞 Contacto',
+        'email-info': 'si tienes dudas o necesitas hablar directamente conmigo.',
+        'amino-info': 'también puedes encontrarme allí.',
+        // Modal
+        'order-received': '🎉 ¡Pedido Recibido!',
+        'thank-you-form': '¡Gracias por tu formulario!',
+        'order-analysis': '✅ Tu pedido está en análisis y estará listo pronto.',
+        'email-confirmation': '📧 Recibirás una confirmación por correo.',
+        'contact-more-info': '📞 Contacta para más información:',
+        'close': 'Cerrar'
+      }
+    };
+
+    // Função para mudar idioma
+    function changeLanguage(lang) {
+      const elements = document.querySelectorAll('[data-translate]');
+      
+      elements.forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (translations[lang] && translations[lang][key]) {
+          element.textContent = translations[lang][key];
+        }
+      });
+      
+      // Salvar preferência no localStorage
+      localStorage.setItem('selectedLanguage', lang);
+    }
+
+    // Carregar idioma salvo ou detectar idioma do navegador
+    function loadLanguage() {
+      const savedLang = localStorage.getItem('selectedLanguage');
+      const browserLang = navigator.language.split('-')[0];
+      
+      let lang = 'pt'; // Padrão
+      
+      if (savedLang) {
+        lang = savedLang;
+      } else if (browserLang === 'en') {
+        lang = 'en';
+      } else if (browserLang === 'es') {
+        lang = 'es';
+      }
+      
+      // Definir o valor do select
+      document.getElementById('language-select').value = lang;
+      
+      // Aplicar tradução
+      changeLanguage(lang);
+    }
+
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      
+      // Mostrar modal de agradecimento
+      showThankYouModal();
+      
+      // Enviar formulário para Formspree após delay
+      setTimeout(() => {
+        event.target.submit();
+      }, 3000);
+      
+      // Limpar o formulário após mostrar o modal
+      setTimeout(() => {
+        event.target.reset();
+      }, 1000);
+    }
+
+    function showThankYouModal() {
+      document.getElementById('thankYouModal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeThankYouModal() {
+      document.getElementById('thankYouModal').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    // Fechar modal ao clicar fora dele
+    window.onclick = function(event) {
+      const modal = document.getElementById('thankYouModal');
+      if (event.target === modal) {
+        closeThankYouModal();
+      }
+    }
+
+    // Carregar idioma quando a página carregar
+    document.addEventListener('DOMContentLoaded', loadLanguage);
+  </script>
 </body>
 </html>
